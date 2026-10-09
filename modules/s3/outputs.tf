@@ -5,3 +5,10 @@ output "bucket_id" {
 output "bucket_arn" {
   value = aws_s3_bucket.this.arn
 }
+<<<<<<< HEAD
+=======
+
+output "bucket_domain_name" {
+  value = aws_s3_bucket.this.bucket_regional_domain_name
+}
+>>>>>>> b58dcd0 ( nodejs update)

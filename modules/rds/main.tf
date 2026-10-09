@@ -9,7 +9,11 @@ resource "aws_db_subnet_group" "this" {
 
 resource "aws_security_group" "rds_sg" {
   name        = "${var.project_name}-${var.environment}-rds-sg"
+<<<<<<< HEAD
   description = "Allow DB access only from EC2 SG"
+=======
+  description = "Allow DB access from EC2 SG"
+>>>>>>> b58dcd0 ( nodejs update)
   vpc_id      = var.vpc_id
 
   ingress {
@@ -19,6 +23,7 @@ resource "aws_security_group" "rds_sg" {
     protocol        = "tcp"
     security_groups = var.allowed_security_group_ids
   }
+<<<<<<< HEAD
   ingress {
     description = "all traffic from public network"
 
@@ -39,6 +44,9 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["103.94.216.34/32"]
 
   }
+=======
+
+>>>>>>> b58dcd0 ( nodejs update)
   egress {
     from_port   = 0
     to_port     = 0
@@ -62,7 +70,11 @@ resource "aws_db_instance" "this" {
   db_subnet_group_name   = aws_db_subnet_group.this.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
   skip_final_snapshot    = true
+<<<<<<< HEAD
   publicly_accessible    = true
+=======
+  publicly_accessible    = false
+>>>>>>> b58dcd0 ( nodejs update)
   multi_az               = false
 
   tags = {

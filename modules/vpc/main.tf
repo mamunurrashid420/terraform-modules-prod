@@ -6,6 +6,12 @@ resource "aws_vpc" "this" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
+<<<<<<< HEAD
+=======
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
+>>>>>>> b58dcd0 ( nodejs update)
 
   tags = {
     Name = "${var.project_name}-${var.environment}-vpc"
@@ -20,7 +26,11 @@ resource "aws_internet_gateway" "this" {
   }
 }
 
+<<<<<<< HEAD
 # Public subnets - EC2 eikhane thakbe
+=======
+# Public subnets
+>>>>>>> b58dcd0 ( nodejs update)
 resource "aws_subnet" "public" {
   count                   = var.az_count
   vpc_id                  = aws_vpc.this.id
@@ -34,7 +44,11 @@ resource "aws_subnet" "public" {
   }
 }
 
+<<<<<<< HEAD
 # Private subnets - RDS eikhane thakbe
+=======
+# Private subnets
+>>>>>>> b58dcd0 ( nodejs update)
 resource "aws_subnet" "private" {
   count             = var.az_count
   vpc_id            = aws_vpc.this.id
@@ -47,7 +61,11 @@ resource "aws_subnet" "private" {
   }
 }
 
+<<<<<<< HEAD
 # NAT Gateway - private subnet theke outbound internet (e.g. package install) er jonno
+=======
+# NAT Gateway (single NAT for cost saving; use one per AZ in prod)
+>>>>>>> b58dcd0 ( nodejs update)
 resource "aws_eip" "nat" {
   domain = "vpc"
 }

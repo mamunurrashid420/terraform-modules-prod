@@ -70,13 +70,25 @@ variable "db_password" {
   sensitive   = true
 }
 
+<<<<<<< HEAD
+=======
+variable "beanstalk_solution_stack" {
+  description = "Elastic Beanstalk solution stack name"
+  type        = string
+  default     = "64bit Amazon Linux 2023 v4.1.1 running Node.js 20"
+}
+
+>>>>>>> b58dcd0 ( nodejs update)
 variable "s3_bucket_name" {
   description = "Globally unique S3 bucket name"
   type        = string
 }
+<<<<<<< HEAD
 
 variable "beanstalk_solution_stack" {
   description = "Elastic Beanstalk solution stack name"
   type        = string
   default     = "64bit Amazon Linux 2023 v6.11.5 running Node.js 20"
 }
+=======
+>>>>>>> b58dcd0 ( nodejs update)

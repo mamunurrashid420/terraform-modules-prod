@@ -22,3 +22,11 @@ variable "key_name" {
   type    = string
   default = ""
 }
+<<<<<<< HEAD
+=======
+
+variable "instance_profile_name" {
+  type    = string
+  default = null
+}
+>>>>>>> b58dcd0 ( nodejs update)
