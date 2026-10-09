@@ -13,27 +13,18 @@ resource "aws_security_group" "ec2_sg" {
   description = "Allow SSH and HTTP"
   vpc_id      = var.vpc_id
 
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-<<<<<<< HEAD
-    cidr_blocks = ["0.0.0.0/0"] # demo only - production e nijer IP diye restrict koro
-  }
-### ICMP enable
-ingress {
-    description = "ICMP"
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
-}
-=======
-    cidr_blocks = ["0.0.0.0/0"] # restrict this to your IP in real usage
+  dynamic "ingress" {
+    for_each = length(var.ssh_cidr_blocks) == 0 ? [] : [1]
+
+    content {
+      description = "SSH"
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = var.ssh_cidr_blocks
+    }
   }
 
->>>>>>> b58dcd0 ( nodejs update)
   ingress {
     description = "HTTP"
     from_port   = 80
@@ -60,10 +51,7 @@ resource "aws_instance" "this" {
   subnet_id              = var.subnet_id
   key_name               = var.key_name != "" ? var.key_name : null
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-<<<<<<< HEAD
-=======
   iam_instance_profile   = var.instance_profile_name
->>>>>>> b58dcd0 ( nodejs update)
 
   tags = {
     Name = "${var.project_name}-${var.environment}-ec2"

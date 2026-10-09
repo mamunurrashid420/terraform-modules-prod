@@ -10,15 +10,6 @@ output "rds_endpoint" {
   value = module.rds.db_endpoint
 }
 
-<<<<<<< HEAD
-output "s3_bucket_name" {
-  value = module.s3.bucket_id
-}
-
-output "beanstalk_url" {
-  value = module.beanstalk.environment_cname
-}
-=======
 output "beanstalk_url" {
   value = module.beanstalk.environment_cname
 }
@@ -26,4 +17,3 @@ output "beanstalk_url" {
 output "s3_bucket_name" {
   value = module.s3.bucket_id
 }
->>>>>>> b58dcd0 ( nodejs update)

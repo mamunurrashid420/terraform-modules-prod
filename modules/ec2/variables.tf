@@ -22,11 +22,14 @@ variable "key_name" {
   type    = string
   default = ""
 }
-<<<<<<< HEAD
-=======
 
 variable "instance_profile_name" {
   type    = string
   default = null
 }
->>>>>>> b58dcd0 ( nodejs update)
+
+variable "ssh_cidr_blocks" {
+  description = "CIDR blocks allowed to SSH to the EC2 instance; use your public IP with /32"
+  type        = list(string)
+  default     = []
+}

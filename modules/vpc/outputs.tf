@@ -9,10 +9,7 @@ output "public_subnet_ids" {
 output "private_subnet_ids" {
   value = aws_subnet.private[*].id
 }
-<<<<<<< HEAD
-=======
 
 output "vpc_cidr" {
   value = aws_vpc.this.cidr_block
 }
->>>>>>> b58dcd0 ( nodejs update)

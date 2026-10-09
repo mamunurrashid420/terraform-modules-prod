@@ -33,6 +33,12 @@ resource "aws_elastic_beanstalk_environment" "this" {
   }
 
   setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "SecurityGroups"
+    value     = var.instance_security_group_id
+  }
+
+  setting {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "ServiceRole"
     value     = var.service_role_arn

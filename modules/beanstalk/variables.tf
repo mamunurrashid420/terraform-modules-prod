@@ -26,6 +26,10 @@ variable "ec2_instance_profile_name" {
   type = string
 }
 
+variable "instance_security_group_id" {
+  type = string
+}
+
 variable "service_role_arn" {
   type = string
 }
